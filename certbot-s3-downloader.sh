@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Certbot s3 downloader shell
-SOURCE_DIR=$1
+CONFIG_FILE=$1
 
-if [ ! -f "$SOURCE_DIR" ]; then
+if [ ! -f "$CONFIG_FILE" ]; then
     echo "Certbot-s3-downloader source file do not exists, please check and try again!"
     exit 1
 fi
 
-source $SOURCE_DIR
+source $CONFIG_FILE
 
 if [ -z "$S3_CERTIFICATES_URI" ]; then
     echo "S3_CERTIFICATES_URI not set, exit!"
