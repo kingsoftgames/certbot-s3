@@ -1,4 +1,4 @@
-# certbot-s3-downloader
+# certbot-s3
 
 ## Introduction
 
@@ -10,6 +10,6 @@ Run `install.sh` with `sudo` to deploy this service.
 
 ## Tips
 
-- Before run this service, please configure  `certbot-s3-downloader.conf`, include uri information (and aws credentials).
+- Before run this service, please configure  `certbot-s3.conf`, include uri information (and AWS credentials).
 - If `.conf` file have changed, please rerun `install.sh`.
 - Use IAM Roles is best practice.

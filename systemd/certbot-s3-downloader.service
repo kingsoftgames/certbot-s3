@@ -1,8 +1,0 @@
-[Unit]
-Description=Certbot s3 downloader service
-
-[Service]
-Type=idle
-EnvironmentFile=/etc/default/certbot-s3-downloader
-WorkingDirectory=/usr/local/bin/
-ExecStart=/bin/bash certbot-s3-downloader.sh /etc/default/certbot-s3-downloader

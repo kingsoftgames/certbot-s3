@@ -1,0 +1,10 @@
+[Unit]
+Description=certbot-s3
+
+[Timer]
+OnCalendar=monthly
+AccuracySec=1min
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target
