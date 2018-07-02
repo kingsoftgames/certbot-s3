@@ -1,0 +1,16 @@
+# /etc/cron.d/certbot-s3 -- Sync HTTPS certificates from AWS S3 monthly
+
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# CERT_DOMAIN=example.com
+# S3_PREFIX=s3://example-bucket/certs
+
+# For awscli
+# AWS_ACCESS_KEY_ID=
+# AWS_SECRET_ACCESS_KEY=
+# AWS_DEFAULT_REGION=us-east-1
+
+# m h dom mon dow user    command
+0 1 1 * * root aws s3 sync $S3_PREFIX/$CERT_DOMAIN/ /etc/ssl/private/$CERT_DOMAIN --exact-timestamps
+5 1 1 * * root systemctl reload nginx.service
