@@ -9,12 +9,8 @@ if [ ! `id -u` -eq 0 ];then
     exit 1
 fi
 
-if [ ! -d "/usr/lib/systemd/system/" ]; then
-    mkdir -p /usr/lib/systemd/system/
-fi
-
 cp -v certbot-s3.conf /etc/default/certbot-s3
-cp -v certbot-s3.service certbot-s3.timer /usr/lib/systemd/system/
+cp -v certbot-s3.service certbot-s3.timer /etc/systemd/system/
 
 systemctl daemon-reload
 systemctl enable certbot-s3.timer
