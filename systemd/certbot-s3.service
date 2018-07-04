@@ -6,4 +6,4 @@ Type=idle
 User=root
 EnvironmentFile=/etc/default/certbot-s3
 ExecStart=/bin/bash -c '`which aws` s3 sync $S3_PREFIX/$CERT_DOMAIN/ /etc/ssl/private/$CERT_DOMAIN --exact-timestamps'
-ExecStartPost=systemctl reload nginx.service
+ExecStartPost=/bin/systemctl reload nginx.service
