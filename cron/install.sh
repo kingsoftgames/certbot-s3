@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Install system-wide crontab file of certbot-s3.
+
+set -e
+
+if [ ! `id -u` -eq 0 ];then
+    echo 'Please run as root.'
+    exit 1
+fi
+
+cd "$(dirname "$0")"
+
+cp -v certbot-s3 /etc/cron.d/
+
+# Only root can access this file,
+# Because it contains sensitive data like AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+chmod 600 /etc/cron.d/certbot-s3
+
+echo Install OK!
+exit 0

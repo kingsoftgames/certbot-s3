@@ -1,15 +1,25 @@
 # certbot-s3
 
-## Introduction
+This repository is designed to work with [certbot-lambda](https://github.com/rog2/certbot-lambda) to download certificates monthly from AWS S3.
 
-This service should cooperate with [certbot-lambda](https://github.com/rog2/certbot-lambda) to download certificates from s3 bucket, otherwise you can also download other files.
+## Usage
 
-## Instructions
+### Cron
 
-Run `install.sh` with `sudo` to deploy this service.
+1.  Fill in required environment variables in `cron/certbot-s3`.
 
-## Tips
+2. Run `sudo cron/install.sh` to install.
 
-- Before run this service, please configure  `certbot-s3.conf`, include uri information (and AWS credentials).
-- If `.conf` file have changed, please rerun `install.sh`.
-- Use IAM Roles is best practice.
+### Systemd
+
+1.  Fill in required environment variables in `systemd/certbot-s3.conf`.
+
+2. Run `sudo systemd/install.sh` to install.
+
+3. Run `sudo systemctl start certbot-s3.service` to sync certificates now.
+
+## Notes on EC2
+
+Prefer IAM role on EC2 instances.
+
+In this case, you should only fill in the `AWS_DEFAULT_REGION` variable, leaving `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` commented out.

@@ -9,6 +9,8 @@ if [ ! `id -u` -eq 0 ];then
     exit 1
 fi
 
+cd "$(dirname "$0")"
+
 cp -v certbot-s3.conf /etc/default/certbot-s3
 cp -v certbot-s3.service certbot-s3.timer /etc/systemd/system/
 
@@ -20,5 +22,5 @@ systemctl daemon-reload
 systemctl enable certbot-s3.timer
 systemctl restart certbot-s3.timer
 
-echo Init success!
+echo Install OK!
 exit 0
